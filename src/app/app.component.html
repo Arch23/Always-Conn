@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <a href="#" class="navbar-brand">{{ title }}</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -16,12 +16,12 @@
         <a [routerLink]="['/plans']" class="nav-link" *ngIf="loggedUser">Plans</a>
       </li>
       <li class="nav-item">
-        <a (click)="logout" class="nav-link" *ngIf="loggedUser">Logout</a>
+        <a (click)="logout()" class="nav-link" *ngIf="loggedUser">Logout</a>
       </li>
     </ul>
   </div>
 </nav>
 
-<div class="container">
-  <router-outlet></router-outlet>
+<div class="container main-container">
+    <router-outlet></router-outlet>
 </div>

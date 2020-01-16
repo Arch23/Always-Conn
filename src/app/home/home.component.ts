@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../entities/user';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  private loggedUser: User
+
+  constructor(
+    private loginService: LoginService
+  ) { 
+    this.loginService.currentUserSubject.subscribe(
+      (newUser: User) => this.loggedUser = newUser
+    );
+  }
 
   ngOnInit() {
+    this.loggedUser = this.loginService.getCurrentUser();
   }
+
+  getUserName() {
+    return this.loggedUser?this.loggedUser.firstName:'Guest';
+  }
+
 
 }

@@ -1,29 +1,31 @@
 import { UserService } from './user.service';
 import { Injectable } from '@angular/core';
 import { User } from '../entities/user';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  private currentUser: User;
+  public currentUserSubject: BehaviorSubject<User>;
 
   constructor(private userService: UserService) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
   }
 
   getCurrentUser() : User{
-    return this.currentUser;
+    return this.currentUserSubject.value;
   }
 
   login(
     username: string,
     password: string
   ) : boolean {
-    this.currentUser = this.checkUser(username, password)
-    if(this.currentUser){
-      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+    const currentUser = this.checkUser(username, password)
+    if(currentUser){
+      localStorage.setItem('currentUser', JSON.stringify(currentUser));
+      this.currentUserSubject.next(currentUser);
       return true;
     }
     return false;
@@ -31,6 +33,7 @@ export class LoginService {
 
   logout() {
     localStorage.removeItem('currentUser');
+    this.currentUserSubject.next(null);
   }
 
   private checkUser(
@@ -38,12 +41,12 @@ export class LoginService {
     password: string
   ) : User {
     let user: User = undefined;
-
-    if((username && username.trim.length > 0) &&
-      (password && password.trim.length > 0))
+    if((username && username.trim().length > 0) &&
+      (password && password.trim().length > 0))
     { 
       user = this.userService.getUserByUsername(username);
 
+      console.log(user);
       if(user){
         if(user.password!=password){
           user = undefined;

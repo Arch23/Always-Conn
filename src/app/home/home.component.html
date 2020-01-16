@@ -1,1 +1,13 @@
-<p>home works!</p>
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center">
+        <div class="card col-md-8">
+            <div class="card-body">
+                <h1 class="card-title">Welcome, {{getUserName()}}</h1>
+                <p *ngIf="!!loggedUser;else noUserLogged">
+                    Yay
+                </p>
+            </div>
+            <ng-template #noUserLogged>Please sigh-in to use our system</ng-template>
+        </div>
+    </div>
+</div>
