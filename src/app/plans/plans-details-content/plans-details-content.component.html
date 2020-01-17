@@ -1,0 +1,29 @@
+<div class="card-body">
+    <h4 class="card-title">{{ plan.name }}</h4>
+</div>
+<div class="card-body">
+    <p class="card-text">
+        {{ plan.description }}
+    </p>
+</div>
+<hr/>
+<div class="card-body">
+    <li *ngFor="let benefit of plan.benefits">
+        {{ benefit }}
+    </li>
+</div>
+<hr/>
+<div class="card-body">
+    <p class="card-text plan-limit">
+        Data limit:
+        <span>
+            {{ plan.dataLimit }} Gb
+        </span>
+    </p>
+</div>
+<hr/>
+<div class="card-body text-center">
+    <p class="card-text plan-value">
+        {{ plan.value | currency:'BRL'}} per month
+    </p>
+</div>
