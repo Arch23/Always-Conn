@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Plan } from 'src/app/entities/plan';
 import { ActivatedRoute } from '@angular/router';
-import { $ } from 'protractor';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-plans-details',
@@ -24,7 +24,8 @@ export class PlansDetailsComponent implements OnInit {
     private planService: PlanService,
     private loginService: LoginService,
     private userService: UserService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toastr: ToastrService
   ) {
     this.loginService.currentUserSubject.subscribe(
       (newUser: User) => this.currentUser = newUser
@@ -53,7 +54,7 @@ export class PlansDetailsComponent implements OnInit {
     let tmpUser = this.userService.selectPlan(this.currentUser, this.plan);
     if(tmpUser) {
       this.loginService.currentUserSubject.next(tmpUser);
-      console.log('activated');
+      this.toastr.success(`Plan ${this.plan.name} activated`);
     }
   }
 

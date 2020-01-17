@@ -3,11 +3,18 @@
         <div class="card col-md-8">
             <div class="card-body">
                 <h1 class="card-title">Welcome, {{getUserName()}}</h1>
-                <p *ngIf="!!loggedUser;else noUserLogged">
-                    Yay
-                </p>
+                <div *ngIf="!!loggedUser;else noUserLogged">
+                    <p *ngIf="!!loggedUser.activePlan;else noPlanSelected">
+                        Your active plan is: {{loggedUser.activePlan.name}}.
+                    </p>
+                </div>
             </div>
             <ng-template #noUserLogged>Please sigh-in to use our system</ng-template>
+            <ng-template #noPlanSelected>
+                <p class="card-text">
+                    You have no plan activated, please go to plans to see our available plans
+                </p>
+            </ng-template>
         </div>
     </div>
 </div>
