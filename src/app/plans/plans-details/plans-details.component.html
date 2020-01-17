@@ -1,1 +1,38 @@
-<p>plans-details works!</p>
+<div class="container">
+    <div class="row">
+        <div class="card col-12 col-sm-12 col-md-10 .col-lg-10 .col-xl-10 shadow p-3 mb-5 bg-white rounded">
+            <div class="card-body">
+                <h4 class="card-title">{{ plan.name }}</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    {{ plan.description }}
+                </p>
+            </div>
+            <hr/>
+            <div class="card-body">
+                <li *ngFor="let benefit of plan.benefits">
+                    {{ benefit }}
+                </li>
+            </div>
+            <hr/>
+            <div class="card-body">
+                <p class="card-text plan-limit">
+                    Data limit:
+                    <span>
+                        {{ plan.dataLimit }} Gb
+                    </span>
+                </p>
+            </div>
+            <hr/>
+            <div class="card-body text-center">
+                <p class="card-text plan-value">
+                    {{ plan.value | currency:'BRL'}} per month
+                </p>
+            </div>
+            <div class="card-body text-center">
+                <button class="btn btn-primary" [disabled]="isPlanActive()" (click)="activatePlan()">Activate</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -48,13 +48,17 @@ export class UserService {
     );
   }
 
-  selectPlan(currentUser: User,selectedPlan: Plan) {
+  selectPlan(currentUser: User,selectedPlan: Plan) : User{
+    let tmpUser = null;
     this.systemUsers.forEach(
       (user: User) => {
         if(user.id == currentUser.id){
           user.activePlan = selectedPlan;
+          tmpUser = user;
         }
       }
     );
+
+    return tmpUser;
   }
 }

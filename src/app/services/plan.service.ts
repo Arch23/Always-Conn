@@ -14,7 +14,7 @@ export class PlanService {
         'id': 1,
         'name': 'Plan 1',
         'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a turpis efficitur, laoreet elit id, tempor arcu. Etiam eget viverra turpis, ac iaculis urna. Phasellus gravida blandit accumsan. Curabitur lorem magna, fringilla eget justo non, facilisis scelerisque odio. Sed pulvinar nisi ac dolor maximus venenatis. Ut feugiat urna tincidunt odio blandit, a vehicula metus sodales. Sed suscipit leo consectetur, aliquam tellus vel, viverra justo. Fusce non magna sodales felis euismod interdum vitae ac risus. Nunc nec blandit elit. Nam ac nisi arcu. Etiam pretium ac libero eu congue. Proin fringilla, risus et efficitur consequat, orci purus imperdiet est, ut posuere nisi massa vel nisl. Aliquam erat volutpat. Sed rutrum sed lacus et accumsan.',
-        'value': 10.99,
+        'value': 10,
         'dataLimit': 10,
         'benefits': [
           'Fusce ut nisl id turpis',
@@ -56,8 +56,8 @@ export class PlanService {
         'id': 4,
         'name': 'Plan 4',
         'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a turpis efficitur, laoreet elit id, tempor arcu. Etiam eget viverra turpis, ac iaculis urna. Phasellus gravida blandit accumsan. Curabitur lorem magna, fringilla eget justo non, facilisis scelerisque odio. Sed pulvinar nisi ac dolor maximus venenatis. Ut feugiat urna tincidunt odio blandit, a vehicula metus sodales. Sed suscipit leo consectetur, aliquam tellus vel, viverra justo. Fusce non magna sodales felis euismod interdum vitae ac risus. Nunc nec blandit elit. Nam ac nisi arcu. Etiam pretium ac libero eu congue. Proin fringilla, risus et efficitur consequat, orci purus imperdiet est, ut posuere nisi massa vel nisl. Aliquam erat volutpat. Sed rutrum sed lacus et accumsan.',
-        'value': 40.99,
-        'dataLimit': 50,
+        'value': 50.99,
+        'dataLimit': 60,
         'benefits': [
           'Fusce ut nisl id turpis',
           'Suspendisse sagittis, nunc id laoreet',

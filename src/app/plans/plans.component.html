@@ -1,1 +1,22 @@
-<p>plans works!</p>
+
+
+<div class="container">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" *ngFor="let plan of plans; index as i"  [attr.data-slide-to]="i" [class]="i==0?'carousel-dark active':'carousel-dark'"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div *ngFor="let plan of plans; index as i" [class]="i==0?'carousel-item active':'carousel-item'">
+            <app-plans-details-mini [plan]="plan" [is-home]="isHome"></app-plans-details-mini>
+          </div>
+        </div>
+        <a class="carousel-control-prev carousel-dark" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next carousel-dark" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+</div>

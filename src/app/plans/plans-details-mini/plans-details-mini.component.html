@@ -1,0 +1,40 @@
+<div class="containter">
+    <div class="row">
+        <div class="card col-8 col-sm-8 col-md-6 .col-lg-4 .col-xl-4 shadow p-3 mb-5 bg-white rounded">
+            <div class="card-body">
+                <h3 class="card-title">{{ plan.name }}</h3>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li *ngFor="let benefit of plan.benefits | slice:0:3 ; index as i">
+                        <p>{{ benefit }}</p>
+                    </li>
+                    <li>
+                        More...
+                    </li>
+                </ul>
+            </div>
+            <hr/>
+            <div class="card-body">
+                <p class="card-text plan-limit">
+                    Data limit:
+                    <span>
+                        {{ plan.dataLimit }} Gb
+                    </span>
+                </p>
+            </div>
+            <hr/>
+            <div class="card-body text-center">
+                <p class="card-text plan-value">
+                    {{ plan.value | currency:'USD' }} per month
+                </p>
+            </div>
+            <div *ngIf="!isHome">
+                <hr>
+                <div class="card-body text-center">
+                    <button class="btn btn-primary" (click)="goToPlan()">See details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
