@@ -26,7 +26,7 @@ export class UserService {
       {
         'id': 2,
         'username': 'user',
-        'password': 'psswrd',
+        'password': '123',
         'firstName': 'User',
         'lastName': '1',
         'activePlan': null,
