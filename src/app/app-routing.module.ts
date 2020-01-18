@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { PlansComponent } from './plans/plans.component';
 import { PlansDetailsComponent } from './plans/plans-details/plans-details.component';
+import { SigninComponent } from './signin/signin.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,10 @@ const routes: Routes = [
     component: PlansDetailsComponent,
     canActivate: [AuthService]
   },
+  {
+    path: 'signin',
+    component: SigninComponent
+  }
 ];
 
 @NgModule({

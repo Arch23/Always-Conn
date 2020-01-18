@@ -10,13 +10,13 @@ export class User {
     usedData: number
 
     constructor(
-        id: number,
-        username: string,
-        password: string,
-        firstName: string,
-        lastName: string,
-        activePlan: Plan,
-        usedData: number
+        id?: number,
+        username?: string,
+        password?: string,
+        firstName?: string,
+        lastName?: string,
+        activePlan?: Plan,
+        usedData?: number
     ){
         this.id = id;
         this.username = username;

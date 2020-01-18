@@ -1,3 +1,4 @@
+import { SigninModule } from './signin/signin.module';
 import { LoginModule } from './login/login.module';
 import { PlansModule } from './plans/plans.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,6 +21,7 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
     PlansModule,
     LoginModule,
+    SigninModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'

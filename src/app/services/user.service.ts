@@ -1,3 +1,4 @@
+import { ValidationsService } from './../helpers/validations.service';
 import { Injectable } from '@angular/core';
 import { User } from '../entities/user';
 import { Plan } from '../entities/plan';
@@ -9,7 +10,9 @@ export class UserService {
 
   private systemUsers: User[]
 
-  constructor() { 
+  constructor(
+    private validationsService: ValidationsService
+  ) { 
     this.systemUsers = [
       {
         'id': 1,
@@ -60,5 +63,68 @@ export class UserService {
     );
 
     return tmpUser;
+  }
+
+  createNewUser(newUser: User) : 
+    {addedUser: User, msg: string}
+  {
+    if(this.systemUsers.some(
+        (user: User) => user.username == newUser.username)
+    ){
+      return {
+        addedUser: null,
+        msg: 'Username already in use!'
+      };
+    }
+
+    let validationResult: {res: boolean, msg: string} = this.validationsService.validateString(newUser.username, 3, 20, 'username');
+    if(!validationResult['res']){
+      return {
+        addedUser: null,
+        msg: validationResult['msg']
+      };
+    }
+
+    validationResult = this.validationsService.validateString(newUser.password, 3, 20, 'password');
+    if(!validationResult['res']){
+      return {
+        addedUser: null,
+        msg: validationResult['msg']
+      };
+    }
+
+    validationResult = this.validationsService.validateString(newUser.firstName, 1, 30, 'first name');
+    if(!validationResult['res']){
+      return {
+        addedUser: null,
+        msg: validationResult['msg']
+      };
+    }
+
+    validationResult = this.validationsService.validateString(newUser.lastName, 1, 60, 'last name');
+    if(!validationResult['res']){
+      return {
+        addedUser: null,
+        msg: validationResult['msg']
+      };
+    }
+
+    console.log('passed all val');
+    const nextId: number = Math.max(...this.systemUsers.map((user: User)=>user.id))+1;
+
+    this.systemUsers.push(new User(
+      nextId,
+      newUser.username,
+      newUser.password,
+      newUser.firstName,
+      newUser.lastName,
+      null,
+      null
+    ));
+
+    return {
+      addedUser: this.systemUsers.find((user: User)=>user.id==nextId),
+      msg: ''
+    };
   }
 }

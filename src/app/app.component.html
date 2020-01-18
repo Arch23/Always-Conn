@@ -13,6 +13,9 @@
         <a [routerLink]="['/login']" class="nav-link" *ngIf="!loggedUser">Login</a>
       </li>
       <li routerLinkActive="active" class="nav-item">
+        <a [routerLink]="['/signin']" class="nav-link" *ngIf="!loggedUser">Sign In</a>
+      </li>
+      <li routerLinkActive="active" class="nav-item">
         <a [routerLink]="['/plans']" class="nav-link" *ngIf="loggedUser">Plans</a>
       </li>
       <li class="nav-item">
